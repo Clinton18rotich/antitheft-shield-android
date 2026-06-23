@@ -1,5 +1,6 @@
 package com.shield.antitheft.ui.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,26 +12,28 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-data class Module(val name: String, val desc: String, val icon: String, val color: Color, val features: Int)
+data class Module(val name: String, val desc: String, val icon: String, val color: Color, val features: Int, val route: String)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ModulesScreen(navController: NavController) {
+    val context = LocalContext.current
     val modules = listOf(
-        Module("Biometric Capture", "Face, voice, fingerprint capture", "📸", Color(0xFF22D3EE), 18),
-        Module("Location Tracker", "GPS, WiFi, Cell triangulation", "📍", Color(0xFF34D399), 12),
-        Module("Stealth Mode", "Hide app, run silently", "👻", Color(0xFF8B5CF6), 10),
-        Module("Evidence Flow", "Auto-collect & email evidence", "📦", Color(0xFFFBBF24), 14),
-        Module("Remote Install", "Install companion apps", "📲", Color(0xFFA78BFA), 8),
-        Module("Reverse Connect", "Connect to thief's device", "🔄", Color(0xFF22D3EE), 9),
-        Module("Alert System", "Email, SMS, Telegram alerts", "🚨", Color(0xFFF87171), 11),
-        Module("Security Lab", "Test & verify protections", "🔬", Color(0xFF34D399), 15),
-        Module("Bypass Engine", "Bypass Android restrictions", "🔓", Color(0xFFFBBF24), 23),
+        Module("Biometric Capture", "Face, voice, fingerprint capture", "📸", Color(0xFF22D3EE), 18, "command"),
+        Module("Location Tracker", "GPS, WiFi, Cell triangulation", "📍", Color(0xFF34D399), 12, "command"),
+        Module("Stealth Mode", "Hide app, run silently", "👻", Color(0xFF8B5CF6), 10, "stealth"),
+        Module("Evidence Flow", "Auto-collect & email evidence", "📦", Color(0xFFFBBF24), 14, "evidence"),
+        Module("Remote Install", "Install companion apps", "📲", Color(0xFFA78BFA), 8, "install"),
+        Module("Reverse Connect", "Connect to thief's device", "🔄", Color(0xFF22D3EE), 9, "reverse"),
+        Module("Alert System", "Email, SMS, Telegram alerts", "🚨", Color(0xFFF87171), 11, "alerts"),
+        Module("Security Lab", "Test & verify protections", "🔬", Color(0xFF34D399), 15, "security"),
+        Module("Bypass Engine", "Bypass Android restrictions", "🔓", Color(0xFFFBBF24), 23, "bypass"),
     )
 
     Scaffold(
@@ -42,7 +45,11 @@ fun ModulesScreen(navController: NavController) {
     ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding).padding(12.dp)) {
             items(modules) { mod ->
-                Card(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp).clickable { },
+                Card(modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                    .clickable {
+                        Toast.makeText(context, "Opening ${mod.name}...", Toast.LENGTH_SHORT).show()
+                        navController.navigate(mod.route)
+                    },
                     colors = CardDefaults.cardColors(containerColor = Color(0xFF1E293B))) {
                     Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text(mod.icon, fontSize = 32.sp)
