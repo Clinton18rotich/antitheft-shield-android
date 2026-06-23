@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.shield.antitheft.app-merged_res-47:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.shield.antitheft.app-main-49:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.shield.antitheft.app-merged_res-47:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.shield.antitheft.app-main-49:/mipmap-hdpi/ic_launcher.png"
+    }
+]
