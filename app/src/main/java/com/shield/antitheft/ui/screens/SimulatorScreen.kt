@@ -71,14 +71,10 @@ fun SimulatorScreen(navController: NavController) {
                         }
                         Spacer(Modifier.height(12.dp))
                         Button(onClick = {
-                            running = scenario.name
-                            currentStep = 0
-                            log = emptyList()
+                            running = scenario.name; currentStep = 0; log = emptyList()
                             scope.launch {
                                 scenario.steps.forEachIndexed { i, step ->
-                                    currentStep = i + 1
-                                    log = log + "✅ $step"
-                                    delay(600)
+                                    currentStep = i + 1; log = log + "✅ $step"; delay(600)
                                 }
                                 running = ""
                                 Toast.makeText(context, "${scenario.name}: Complete!", Toast.LENGTH_SHORT).show()
@@ -90,9 +86,7 @@ fun SimulatorScreen(navController: NavController) {
                             Spacer(Modifier.height(8.dp))
                             Surface(color = Color(0xFF000000), shape = MaterialTheme.shapes.small) {
                                 Column(modifier = Modifier.padding(8.dp)) {
-                                    log.forEach { entry ->
-                                        Text(entry, fontSize = 9.sp, fontFamily = FontFamily.Monospace, color = Color(0xFF34D399), modifier = Modifier.padding(vertical = 1.dp))
-                                    }
+                                    log.forEach { entry -> Text(entry, fontSize = 9.sp, fontFamily = FontFamily.Monospace, color = Color(0xFF34D399), modifier = Modifier.padding(vertical = 1.dp)) }
                                 }
                             }
                         }
