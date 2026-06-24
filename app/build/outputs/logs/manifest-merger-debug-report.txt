@@ -1,9 +1,20 @@
 -- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:38:9-46:20
+	android:grantUriPermissions
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:42:13-47
+	android:authorities
+		INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:40:13-64
+	android:exported
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:41:13-37
+	android:name
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:39:13-62
 manifest
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:2:1-64:12
-INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:2:1-64:12
-INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:2:1-64:12
-INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:2:1-64:12
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:2:1-74:12
+INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:2:1-74:12
+INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:2:1-74:12
+INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:2:1-74:12
 MERGED from [androidx.compose.material3:material3:1.1.2] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a42b12ad0a51f8e308439dbb8e147289/transformed/material3-1.1.2/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common:2.7.5] /data/data/com.termux/files/home/.gradle/caches/transforms-3/8a7a9056e856c825cf4ec79d548073ef/transformed/navigation-common-2.7.5/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.7.5] /data/data/com.termux/files/home/.gradle/caches/transforms-3/d674331a1d6f331b2706822bddcdafab/transformed/navigation-runtime-2.7.5/AndroidManifest.xml:17:1-22:12
@@ -132,8 +143,8 @@ ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:20
 	android:name
 		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:20:22-74
 application
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:22:5-63:19
-INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:22:5-63:19
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:22:5-73:19
+INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:22:5-73:19
 MERGED from [androidx.emoji2:emoji2:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/da3398c4e0ab94412c8944ea49b75246/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.emoji2:emoji2:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/da3398c4e0ab94412c8944ea49b75246/transformed/emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /data/data/com.termux/files/home/.gradle/caches/transforms-3/b8d11ad8426ba34454d5792641948162/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:23:5-33:19
@@ -177,41 +188,47 @@ ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:34
 	android:name
 		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:34:27-74
 service#com.shield.antitheft.ShieldService
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:39:9-42:74
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:49:9-52:74
 	android:exported
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:41:13-37
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:51:13-37
 	android:foregroundServiceType
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:42:13-71
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:52:13-71
 	android:name
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:40:13-42
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:50:13-42
 receiver#com.shield.antitheft.SMSReceiver
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:45:9-51:20
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:55:9-61:20
 	android:exported
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:47:13-36
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:57:13-36
 	android:name
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:46:13-40
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:56:13-40
 intent-filter#action:name:android.provider.Telephony.SMS_RECEIVED
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:48:13-50:29
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:58:13-60:29
 action#android.provider.Telephony.SMS_RECEIVED
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:49:17-82
-	android:name
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:49:25-79
-receiver#com.shield.antitheft.SIMChangeReceiver
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:54:9-61:20
-	android:exported
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:56:13-36
-	android:name
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:55:13-46
-intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.SIM_STATE_CHANGED
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:57:13-60:29
-action#android.intent.action.BOOT_COMPLETED
-ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:58:17-79
-	android:name
-		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:58:25-76
-action#android.intent.action.SIM_STATE_CHANGED
 ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:59:17-82
 	android:name
 		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:59:25-79
+receiver#com.shield.antitheft.SIMChangeReceiver
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:64:9-71:20
+	android:exported
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:66:13-36
+	android:name
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:65:13-46
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.SIM_STATE_CHANGED
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:67:13-70:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:68:17-79
+	android:name
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:68:25-76
+action#android.intent.action.SIM_STATE_CHANGED
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:69:17-82
+	android:name
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:69:25-79
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:43:13-45:53
+	android:resource
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:45:17-50
+	android:name
+		ADDED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml:44:17-67
 uses-sdk
 INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /storage/emulated/0/antitheft-app/app/src/main/AndroidManifest.xml

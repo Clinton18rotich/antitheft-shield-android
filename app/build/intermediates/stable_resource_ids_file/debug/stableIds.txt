@@ -126,6 +126,7 @@ com.shield.antitheft:string/suggestions_available = 0x7f090040
 com.shield.antitheft:id/tag_on_apply_window_listener = 0x7f050046
 com.shield.antitheft:id/actions = 0x7f050025
 com.shield.antitheft:id/action_divider = 0x7f050022
+com.shield.antitheft:xml/filepaths = 0x7f0c0000
 com.shield.antitheft:id/accessibility_custom_action_9 = 0x7f050020
 com.shield.antitheft:id/action_image = 0x7f050023
 com.shield.antitheft:styleable/ColorStateListItem = 0x7f0b0002
