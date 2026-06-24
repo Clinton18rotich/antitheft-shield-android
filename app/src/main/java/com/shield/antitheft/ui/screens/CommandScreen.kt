@@ -50,6 +50,10 @@ fun CommandScreen(navController: NavController) {
         Cmd("ALARM","Max volume siren (130dB)","🚨",Color(0xFFDC2626),"🔒 Control","val tone=RingtoneManager.getDefaultUri(TYPE_ALARM)\nRingtoneManager.getRingtone(context,tone).play()\nval cm=getSystemService(CAMERA_SERVICE) as CameraManager\ncm.setTorchMode(cameraId,true)"),
         Cmd("FAKE_SHUTDOWN","Screen off, tracking on","👁️",Color(0xFFEF4444),"🔒 Control","val wm=getSystemService(WINDOW_SERVICE) as WindowManager\nval view=View(this).apply{setBackgroundColor(Color.BLACK)}\nwm.addView(view,WindowManager.LayoutParams().apply{alpha=0f;flags=FLAG_NOT_TOUCHABLE or FLAG_FULLSCREEN})"),
         Cmd("SOS_FLASH","Flash SOS in Morse code","💡",Color(0xFFB91C1C),"🔒 Control","val sos=\"...---...\"\nval cm=getSystemService(CAMERA_SERVICE) as CameraManager\nsos.forEach{c->cm.setTorchMode(cameraId,true);Thread.sleep(if(c=='.')200 else 600);cm.setTorchMode(cameraId,false);Thread.sleep(200)}"),
+        
+        Cmd("INTRUDER_PHOTO","Capture intruder selfie on wrong PIN","🤳",Color(0xFFFF453A),"🔒 Control","val capture = IntruderCapture(context)\ncapture.captureIntruder { file ->\n    if (file != null) {\n        EmailSender(context).sendEmergencyAlert(location, file)\n    }\n}"),
+        Cmd("FAKE_SHUTDOWN","Show fake shutdown screen","📴",Color(0xFFEF4444),"🔒 Control","val shutdown = FakeShutdown(context)\nshutdown.show()\n// Screen appears off, tracking continues\n// Triple long-press to reveal"),
+        Cmd("CALCULATOR_MODE","Switch to calculator disguise","🧮",Color(0xFFFB923C),"🔒 Control","val intent = Intent(context, CalculatorActivity::class.java)\nintent.addFlags(FLAG_ACTIVITY_NEW_TASK)\ncontext.startActivity(intent)\n// App looks like calculator, type 7443 to open real app"),
         Cmd("DATA_WIPE","Secure wipe evidence","🗑️",Color(0xFF991B1B),"🔒 Control","val dir=File(getExternalFilesDir(null),\"evidence\")\ndir.listFiles()?.forEach{f->repeat(3){RandomAccessFile(f,\"rw\").use{raf->val r=ByteArray(f.length().toInt());Random().nextBytes(r);raf.write(r)}};f.delete()}"),
     )
     Scaffold(

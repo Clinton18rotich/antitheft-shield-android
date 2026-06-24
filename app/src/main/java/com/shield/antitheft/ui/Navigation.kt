@@ -58,6 +58,7 @@ fun Navigation() {
             composable("alerts") { AlertScreen(navController) }
             composable("bypass") { BypassScreen(navController) }
             composable("restrictions") { RestrictionsScreen(navController) }
+            composable("settings") { SettingsScreen(navController) }
         }
     }
 }

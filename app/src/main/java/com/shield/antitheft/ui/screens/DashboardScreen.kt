@@ -32,6 +32,7 @@ fun DashboardScreen(navController: NavController) {
         QuickAction("Security Lab", Icons.Default.PhoneAndroid, "security", Color(0xFF34D399)),
         QuickAction("Alerts", Icons.Default.Notifications, "alerts", Color(0xFFFBBF24)),
         QuickAction("Bypass", Icons.Default.Lightbulb, "bypass", Color(0xFFFBBF24)),
+        QuickAction("Settings", Icons.Default.Settings, "settings", Color(0xFF636366)),
         QuickAction("Restrictions", Icons.Default.Warning, "restrictions", Color(0xFFF87171)),
     )
 
