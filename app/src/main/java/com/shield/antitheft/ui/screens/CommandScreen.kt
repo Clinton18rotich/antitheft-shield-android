@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.shield.antitheft.ShieldController
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -91,7 +92,7 @@ fun CommandScreen(navController: NavController) {
                                     TextButton(onClick = {
                                         outputText = "⚡ ${cmd.name}...\n✅ ${cmd.desc}\n📍 Success\n🕐 ${SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())}"
                                         history = listOf(cmd.name) + history.take(9)
-                                        Toast.makeText(context, "⚡ ${cmd.name}", Toast.LENGTH_SHORT).show()
+                                        val controller = ShieldController(context); controller.executeCommand(cmd.name)
                                     }) { Icon(Icons.Default.PlayArrow, null, tint = cmd.color, modifier = Modifier.size(16.dp)) }
                                     Icon(if (expanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore, null, tint = Color.Gray, modifier = Modifier.size(20.dp))
                                 }

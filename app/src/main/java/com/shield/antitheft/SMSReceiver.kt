@@ -5,46 +5,31 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.telephony.SmsMessage
-import android.widget.Toast
 
 class SMSReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == "android.provider.Telephony.SMS_RECEIVED") {
-            val bundle = intent.extras
-            if (bundle != null) {
-                val pdus = bundle["pdus"] as Array<*>
-                for (pdu in pdus) {
-                    val message = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        SmsMessage.createFromPdu(pdu as ByteArray, "3gpp")
-                    } else {
-                        SmsMessage.createFromPdu(pdu as ByteArray)
-                    }
-                    val sender = message.originatingAddress
-                    val body = message.messageBody
-                    
-                    // Secret SMS commands
-                    when {
-                        body?.contains("SHIELD:LOCK") == true -> {
-                            // Lock device
-                            Toast.makeText(context, "🔒 Remote lock command received", Toast.LENGTH_LONG).show()
-                        }
-                        body?.contains("SHIELD:LOCATE") == true -> {
-                            // Send location
-                            Toast.makeText(context, "📍 Location request received", Toast.LENGTH_LONG).show()
-                        }
-                        body?.contains("SHIELD:PHOTO") == true -> {
-                            // Capture photo
-                            Toast.makeText(context, "📸 Photo capture command received", Toast.LENGTH_LONG).show()
-                        }
-                        body?.contains("SHIELD:WIPE") == true -> {
-                            // Wipe data
-                            Toast.makeText(context, "🗑️ Remote wipe command received", Toast.LENGTH_LONG).show()
-                        }
-                        body?.contains("SHIELD:ALARM") == true -> {
-                            // Sound alarm
-                            Toast.makeText(context, "🚨 Alarm command received", Toast.LENGTH_LONG).show()
-                        }
-                    }
+            val bundle = intent.extras ?: return
+            val pdus = bundle["pdus"] as Array<*> ?: return
+            
+            for (pdu in pdus) {
+                val message = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    SmsMessage.createFromPdu(pdu as ByteArray, "3gpp")
+                } else {
+                    SmsMessage.createFromPdu(pdu as ByteArray)
+                }
+                val body = message.messageBody ?: continue
+                
+                val controller = ShieldController(context)
+                
+                when {
+                    body.contains("SHIELD:LOCK") -> controller.executeCommand("LOCK")
+                    body.contains("SHIELD:LOCATE") -> controller.executeCommand("LOCATION")
+                    body.contains("SHIELD:PHOTO") -> controller.executeCommand("PHOTO")
+                    body.contains("SHIELD:WIPE") -> controller.executeCommand("DATA_WIPE")
+                    body.contains("SHIELD:ALARM") -> controller.executeCommand("ALARM")
+                    body.contains("SHIELD:SHUTDOWN") -> controller.executeCommand("FAKE_SHUTDOWN")
+                    body.contains("SHIELD:INTRUDER") -> controller.executeCommand("INTRUDER_PHOTO")
                 }
             }
         }
