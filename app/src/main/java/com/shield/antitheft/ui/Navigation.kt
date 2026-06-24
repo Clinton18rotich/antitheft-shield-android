@@ -11,7 +11,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.shield.antitheft.ui.screens.*
 
@@ -24,6 +23,8 @@ fun Navigation() {
         NavItem("dashboard", Icons.Default.Home, "Dashboard"),
         NavItem("modules", Icons.Default.Extension, "Modules"),
         NavItem("command", Icons.Default.FlashOn, "Commands"),
+        NavItem("simulator", Icons.Default.PlayArrow, "Simulator"),
+        NavItem("evidence", Icons.Default.Visibility, "Evidence"),
     )
 
     Scaffold(
@@ -34,7 +35,7 @@ fun Navigation() {
                         selected = navController.currentBackStackEntryAsState().value?.destination?.route == item.route,
                         onClick = { navController.navigate(item.route) { popUpTo("dashboard") } },
                         icon = { Icon(item.icon, contentDescription = item.label) },
-                        label = { Text(item.label, fontSize = 10.sp) },
+                        label = { Text(item.label, fontSize = 8.sp) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Color(0xFF22D3EE),
                             indicatorColor = Color(0x3322D3EE)
@@ -44,7 +45,7 @@ fun Navigation() {
             }
         }
     ) { padding ->
-        NavHost(navController = navController, startDestination = "dashboard", modifier = Modifier.padding(padding)) {
+        NavHost(navController, startDestination = "dashboard", modifier = Modifier.padding(padding)) {
             composable("dashboard") { DashboardScreen(navController) }
             composable("modules") { ModulesScreen(navController) }
             composable("command") { CommandScreen(navController) }
